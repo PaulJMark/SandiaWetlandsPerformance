@@ -26,6 +26,7 @@ This file is saved in the shared Github repository PaulJMark/SandiaWetlandsPerfo
 Go to the shared directory. Click on the file. Download to a local directory.
   
 Unzip the file into your local directory.  Run the following code and observe 103,954 analytical records are present
+done here.
 
 ```{r}
 library(readr)
