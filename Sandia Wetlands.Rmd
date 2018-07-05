@@ -1,0 +1,64 @@
+---
+title: "Sandia Wetlands "
+author: "Paul Mark", "Allison Chan"
+date: "7/4/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown SQL for generating Sandia Wetlands analytical data
+
+SELECT v_lanl_report_chem.*,  <br/>
+  v_lanl_report_chem.location_id_alias AS location_id_alias1 <br/>
+FROM v_lanl_report_chem <br/>
+WHERE (v_lanl_report_chem.location_id_alias LIKE 'SWA%') OR <br/>
+  (v_lanl_report_chem.location_id_alias LIKE 'SCPZ%') OR <br/>
+  (v_lanl_report_chem.location_id_alias = 'E121') OR <br/>
+  (v_lanl_report_chem.location_id_alias = 'E122') OR <br/>
+  (v_lanl_report_chem.location_id_alias = 'E123') OR <br/>
+  (v_lanl_report_chem.location_id_alias = 'NPDES Outfall 001') <br/>
+  
+This file is saved in the shared Github repository PaulJMark/SandiaWetlandsPerformance.
+  
+Go to the shared directory. Click on the file. Download to a local directory.
+  
+Unzip the file into your local directory.  Run the following code and observe 103,954 analytical records are present
+
+```{r}
+library(readr)
+san <- read_csv("EIM_EXPORT_07_04_2018.csv", 
+                col_types = list('Sample Date' = col_date("%m/%d/%Y"),
+                                 'Display Sample Date'= col_date("%m/%d/%Y"),
+                                 'Sampling Event End Date'= col_date("%m/%d/%Y"),
+                                 'Display End Sample Date'= col_date("%m/%d/%Y"),
+                                 'Lab Receipt Date'= col_date("%m/%d/%Y"),
+                                 'Display Lab Receipt Date'= col_date("%m/%d/%Y"),
+                                 'Analysis Date'= col_date("%m/%d/%Y"),
+                                 'Display Analysis Date'= col_date("%m/%d/%Y"),
+                                 '% Moisture' = col_double(),
+                                 'Uploaded Date'= col_date("%m/%d/%Y"),
+                                 'Display Upload Date'= col_date("%m/%d/%Y"),
+                                 'Last Modified Date'= col_date("%m/%d/%Y"),
+                                 'Display Last Modified Date'= col_date("%m/%d/%Y"),
+                                 'Validated Date'= col_date("%m/%d/%Y"),
+                                 'Display Validation Date'= col_date("%m/%d/%Y"),
+                                 'Web Publish Date'= col_date("%m/%d/%Y")))
+names(san)<-make.names(names(san),unique = TRUE)
+
+summary(san)
+
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
