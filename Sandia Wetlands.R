@@ -47,19 +47,27 @@ san_chloride_plot <- ggplot(san_chloride, aes(x=Sample.Date,y=Report.Result,colo
   labs(x = "", y = "Chloride (mg/L)", size = 6) +
   scale_color_manual(values=c("deepskyblue3","red3","peru")) +
   scale_x_date(date_breaks = "6 month", 
+<<<<<<< HEAD
                date_labels = "%b-%Y",
                limits= c(as.Date("2002-02-01"),as.Date("2018-07-01"))) +
   scale_y_continuous(breaks=seq(0,200,20))+
   theme(panel.grid.major.x = element_blank() ,
     panel.grid.major.y = element_line( size=.1, color="black" ),
     panel.background = element_blank()) +
+=======
+               date_labels = "%b-%Y") +
+>>>>>>> efe579deb344063e389b4f44080781ca38bc34c1
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = .5, size = 6)) +
   theme(axis.text.y = element_text(hjust = 1, vjust = .5, size = 6),
         axis.title.y = element_text(size = 7, face = "bold")) +
   theme(legend.position = "top", 
         legend.text = element_text(size = 6),
+<<<<<<< HEAD
         legend.title = element_text(size = 6, face = "bold"),
         legend.key = element_blank()) +
+=======
+        legend.title = element_text(size = 6, face = "bold")) +
+>>>>>>> efe579deb344063e389b4f44080781ca38bc34c1
   geom_vline(xintercept = as.numeric(as.Date("2012-06-01")), linetype=4, color = "black") +
   geom_vline(xintercept = as.numeric(as.Date("2013-10-01")), linetype=4, color = "salmon") 
   
